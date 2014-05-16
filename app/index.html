@@ -55,9 +55,6 @@
               </ul>
             </li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="./">Fixed top</a></li>
-          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -82,15 +79,15 @@
               <form role="form">
                 <div class="col-sm-6 form-group">
                   <label for="name">Naam</label>
-                  <input type="text" class="form-control" id="name" value="A. van Dijk">
+                  <input type="text" ng-model="user.name" class="form-control" id="name" value="A. van Dijk">
                 </div>
                 <div class="col-sm-6 form-group">
                   <label for="address">Adres</label>
-                  <input type="text" class="form-control" id="address" value="Tolsteegsingel 44, 3512AK, Utrecht">
+                  <input type="text" ng-model="user.address" class="form-control" id="address" value="Tolsteegsingel 44, 3512AK, Utrecht">
                 </div>
                  <div class="col-sm-6 form-group">
                   <label for="dateofbirth">Geboortedatum</label>
-                  <input type="date" class="form-control" id="dateofbirth">
+                  <input type="date" ng-model="user.dateofbirth" class="form-control" id="dateofbirth">
                 </div>
                 <button wz-next type="submit" class="btn btn-default">Volgende</button>
               </form>
@@ -100,7 +97,7 @@
               <form role="form">
                 <div class="col-sm-6 form-group">
                   <label for="maritalstatus">Huwelijkse staat</label>
-                  <select class="form-control" id="maritalstatus">
+                  <select class="form-control" ng-model="user.maritalstatus" id="maritalstatus">
                     <option value="alleenstaand">Alleenstaand</option>
                     <option value="gescheiden">Gescheiden</option>
                     <option value="scheiding">In scheiding</option>
@@ -113,7 +110,7 @@
                 </div>
                  <div class="col-sm-6 form-group">
                   <label for="housingstatus">Woonsituatie</label>
-                   <select class="form-control" id="housingstatus">
+                   <select class="form-control" ng-model="user.housingstatus" id="housingstatus">
                     <option value="bought">Ik ben huiseigenaar</option>
                     <option value="rented">Ik huur een woning</option>
                     <option value="libingin">Ik ben inwonend / thuiswonend</option>
@@ -121,32 +118,32 @@
                 </div>
                 <div class="col-sm-6 form-group">
                   <label for="numberofchildren">Voor hoeveel kinderen bent u financieel verantwoordelijk?</label>
-                  <input type="text" class="form-control" id="numberofchildren" placeholder="0">
+                  <input type="number"ng-model="user.numberofchildren" class="form-control" id="numberofchildren" placeholder="0">
                 </div>
                  <div class="col-sm-6 form-group">
                   <label for="monthlyincome">Netto maandinkomen (&euro;)</label>
-                  <input type="number" class="form-control" id="monthlyincome" placeholder="1700">
+                  <input type="number" ng-model="user.monthlyincome" class="form-control" id="monthlyincome" placeholder="1700">
                 </div>
                 <div class="col-sm-6 form-group">
                   <label for="requestedloanamount">Hoeveel wilt u lenen? (&euro;)</label>
                   <input type="number" class="form-control" id="requestedloanamount" placeholder="1000">
                 </div>
                 <button wz-previous type="submit" class="btn btn-default">Terug</button>
-                <button wz-next type="submit" class="btn btn-default">Volgende</button>
+                <button wz-next type="submit" ng-click="getOptions()" class="btn btn-default">Volgende</button>
               </form>
             </wz-step>
             <wz-step title="2. Uw lening">
-              <h1>Liking it</h1>
-              <p>You're now in the second step of this wizard.</p>
-              <p>Magic things can happen here.</p>
-              <input type="button" wz-next="logStep()" value="Click here to continue" />
-               <input type="button" wz-previous="logStep()" value="Terug" />
+              <h1>Uw lening</h1>
+              <p>Wij kunnen u de volgende leningen aanbieden:</p>
+              <button wz-previous type="submit" class="btn btn-default">Terug</button>
+              <button wz-next type="submit" class="btn btn-default">Volgende</button>
+              {{user | json}}
             </wz-step>
             <wz-step title="3. Voltooid">
-              <h1>Finish him</h1>
-              <p>Finally this ends!</p>
-              <input type="button" wz-next value="Click here to end" />
-              <input type="button" ng-click="goBack()" value="Click here to start again" />
+              <h1>Voltooid</h1>
+              <p>Uw aanvraag voor een lening is in behandeling. U hoort spoedig van ons.</p>
+              <button ng-click="goBack()" type="submit" class="btn btn-default">Nog een lening aanvragen</button>
+              <button wz-next type="submit" class="btn btn-default">Afsluiten</button>
             </wz-step>
           </wizard>
         </section>
