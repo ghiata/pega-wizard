@@ -134,14 +134,17 @@
             </wz-step>
             <wz-step title="2. Uw lening">
               <h1>Uw lening</h1>
-              <p>Wij kunnen u de volgende leningen aanbieden:</p>
+              <p>Wij kunnen u de volgende lening(en) aanbieden:</p>
+              <div class="form-group">
+                <select multiple ng-model="selectedLoan" ng-options="customer.CustomerID as customer.CompanyName for customer in loans"></select>
+              </div>
               <button wz-previous type="submit" class="btn btn-default">Terug</button>
-              <button wz-next type="submit" class="btn btn-default">Volgende</button>
+              <button wz-next type="submit" class="btn btn-default">Bevestigen</button>
               {{user | json}}
             </wz-step>
             <wz-step title="3. Voltooid">
               <h1>Voltooid</h1>
-              <p>Uw aanvraag voor een lening is in behandeling. U hoort spoedig van ons.</p>
+              <p>Uw aanvraag voor een {{selectedLoan}} lening is in behandeling. U hoort spoedig van ons.</p>
               <button ng-click="goBack()" type="submit" class="btn btn-default">Nog een lening aanvragen</button>
               <button wz-next type="submit" class="btn btn-default">Afsluiten</button>
             </wz-step>

@@ -15,17 +15,21 @@ angular.module('pegaWizardApp', ['mgo-angular-wizard'])
         }
 
         $scope.getOptions = function() {
-            alert($scope.user);
+            $http.get('http://www.iNorthwind.com/Service1.svc/getAllCustomers')
+                .success(function (data) {
+                    $scope.loans = data;
+                    $scope.selectedLoan = $scope.loans[0].CustomerID;
+            });
             // Get the loans options from the API
-            $http({method: 'POST', url: '/someUrl'}).
-                success(function(data, status, headers, config) {
+            //$http({method: 'POST', url: '/someUrl'}).
+            //    success(function(data, status, headers, config) {
                   // this callback will be called asynchronously
                   // when the response is available
-                }).
-                error(function(data, status, headers, config) {
+            //    }).
+            //    error(function(data, status, headers, config) {
                   // called asynchronously if an error occurs
                   // or server returns response with an error status.
-                });
+            //    });
         }
 
         $scope.master = {};
@@ -43,4 +47,8 @@ angular.module('pegaWizardApp', ['mgo-angular-wizard'])
         };
 
         $scope.reset();
-    });
+    })
+    .config(['$httpProvider', function ($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }]);
