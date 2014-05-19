@@ -89,7 +89,9 @@
                   <label for="dateofbirth">Geboortedatum</label>
                   <input type="date" ng-model="user.dateofbirth" class="form-control" id="dateofbirth">
                 </div>
-                <button wz-next type="submit" class="btn btn-default btn-ing">Volgende</button>
+                <div class="col-sm-12 form-group">
+                  <button wz-next type="submit" class="btn btn-default btn-ing">Volgende</button>
+                </div>
               </form>
             </wz-step>
              <wz-step title="2. Uw situatie">
@@ -128,8 +130,10 @@
                   <label for="requestedloanamount">Hoeveel wilt u lenen? (&euro;)</label>
                   <input type="number" class="form-control" id="requestedloanamount" placeholder="1000">
                 </div>
-                <button wz-previous type="submit" class="btn btn-default btn-ing">Terug</button>
-                <button wz-next type="submit" ng-click="getOptions()" class="btn btn-default btn-ing">Volgende</button>
+                <div class="col-sm-12 form-group">
+                  <button wz-previous type="submit" class="btn btn-default btn-ing">Terug</button>
+                  <button wz-next type="submit" ng-click="getOptions()" class="btn btn-default btn-ing">Volgende</button>
+                </div>
               </form>
             </wz-step>
             <wz-step title="2. Uw lening">
@@ -138,14 +142,18 @@
               <div class="form-group">
                 <select size="3" class="form-control" ng-model="user.selectedloan" ng-options="customer.CustomerID as customer.CompanyName for customer in loans"></select>
               </div>
-              <button wz-previous type="submit" class="btn btn-default btn-ing">Terug</button>
-              <button wz-next type="submit" class="btn btn-default btn-ing">Bevestigen</button>
+              <div class="col-sm-12 form-group">
+                <button wz-previous type="submit" class="btn btn-default btn-ing">Terug</button>
+                <button wz-next type="submit" class="btn btn-default btn-ing">Bevestigen</button>
+              </div>
             </wz-step>
             <wz-step title="3. Voltooid">
               <h1>Voltooid</h1>
               <p>Uw aanvraag voor een {{user.selectedloan}} lening is in behandeling. U hoort spoedig van ons.</p>
-              <button ng-click="goBack()" type="submit" class="btn btn-default btn-ing">Nog een lening aanvragen</button>
-              <button wz-next type="submit" class="btn btn-default btn-ing">Afsluiten</button>
+              <div class="col-sm-12 form-group">
+                <button ng-click="goBack()" type="submit" class="btn btn-default btn-ing">Nog een lening aanvragen</button>
+                <button wz-next type="submit" class="btn btn-default btn-ing">Afsluiten</button>
+              </div>
             </wz-step>
           </wizard>
         </section>
