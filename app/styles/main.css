@@ -4,6 +4,11 @@ body {
   padding-top: 70px;
 }
 
+.jumbotron {
+	background-color: #f60;
+	color: #fff;
+}
+
 .btn-ing {
 	background-color: #f60 !important;
 	color: #fff !important;

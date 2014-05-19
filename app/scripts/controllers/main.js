@@ -18,7 +18,7 @@ angular.module('pegaWizardApp', ['mgo-angular-wizard'])
             $http.get('http://www.iNorthwind.com/Service1.svc/getAllCustomers')
                 .success(function (data) {
                     $scope.loans = data;
-                    $scope.selectedLoan = $scope.loans[0].CustomerID;
+                    //$scope.selectedLoan = $scope.loans[0].CustomerID;
             });
             // Get the loans options from the API
             //$http({method: 'POST', url: '/someUrl'}).
