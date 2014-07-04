@@ -59,7 +59,7 @@
     <!-- MAIN CONTENT -->
     <div>
         <section id="main_content" class="inner main-inner" ng-app="pegaWizardApp" ng-controller="WizardCtrl">
-            <wizard on-finish="finished()">
+            <wizard on-finish="finished()" template="wizardTemplate.html">
                 <wz-step title="1. Persoonlijke gegevens">
                     <h1>Persoonlijke gegevens</h1>
 
@@ -129,7 +129,7 @@
                         </div>
                         <div class="col-sm-12 form-group">
                             <button wz-previous type="submit" class="btn btn-default btn-ing">Terug</button>
-                            <button wz-next type="submit" ng-click="getOptions()" class="btn btn-default btn-ing">
+                            <button type="submit" ng-click="getOptions()" class="btn btn-default btn-ing">
                                 Volgende
                             </button>
                         </div>
